@@ -1,0 +1,10 @@
+﻿  Sorter.cpp
+C:\Users\George Rashed\Documents\GitHub\Advanced-CPP\Class2\SorterThousand\Sorter.cpp(5,10): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+C:\Users\George Rashed\Documents\GitHub\Advanced-CPP\Class2\SorterThousand\Sorter.cpp(16,10): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+C:\Users\George Rashed\Documents\GitHub\Advanced-CPP\Class2\SorterThousand\Sorter.cpp(34,10): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+C:\Users\George Rashed\Documents\GitHub\Advanced-CPP\Class2\SorterThousand\Sorter.cpp(56,10): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+C:\Users\George Rashed\Documents\GitHub\Advanced-CPP\Class2\SorterThousand\Sorter.cpp(85,10): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+C:\Users\George Rashed\Documents\GitHub\Advanced-CPP\Class2\SorterThousand\Sorter.cpp(95,10): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+  Source.cpp
+  Generating Code...
+  SorterThousand.vcxproj -> C:\Users\George Rashed\Documents\GitHub\Advanced-CPP\Class2\SorterThousand\x64\Debug\SorterThousand.exe
