@@ -10,7 +10,8 @@ public:
 	NodeHandler();
 
 	void CreateNodes(int amount);
+	void DisplayNodes();
 
 private:
-	Node* nodesList[];
+	Node* nodesList[10];
 };

@@ -2,16 +2,13 @@
 
 NodeHandler::NodeHandler()
 {
-	nodesList[0] = nullptr;
+	nodesList[0] = 0;
 }
 
 void NodeHandler::CreateNodes(int amount)
 {
-	nodesList[amount];
 
-	int len = *(nodesList + 1) - *nodesList;
-
-	cout << len;
+	int len = *(&nodesList + 1) - nodesList;
 
 	for (size_t i = 0; i < len; i++)
 	{
@@ -19,5 +16,22 @@ void NodeHandler::CreateNodes(int amount)
 		cout << "Insert Node Data Num: ";
 		cin >> tempNode->data;
 		nodesList[i] = tempNode;
+	}
+}
+
+void NodeHandler::DisplayNodes()
+{
+	int len = *(&nodesList + 1) - nodesList;
+
+	for (size_t i = 0; i < len; i++)
+	{
+		if (nodesList[i]->next == nullptr)
+		{
+			cout << "Node: " << nodesList[i]->data << ", Next Pointer: NULL." << endl;
+		}
+		else
+		{
+			cout << "Node: " << nodesList[i]->data << ", Next Node: " << nodesList[i]->next->data << "." << endl;
+		}
 	}
 }
