@@ -11,6 +11,7 @@ public:
 
 	void CreateNodes(int amount);
 	void SortNodes();
+	void AffixNodesNextPointers(bool loopingList);
 	void DisplayNodes();
 
 private:

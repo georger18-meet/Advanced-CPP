@@ -43,6 +43,26 @@ void NodeHandler::SortNodes()
 	}
 }
 
+void NodeHandler::AffixNodesNextPointers(bool loopingList)
+{
+	int len = *(&_nodesList + 1) - _nodesList;
+
+	for (size_t i = 0; i < len; i++)
+	{
+		if (i != len - 1)
+		{
+			_nodesList[i]->next = _nodesList[i + 1];
+		}
+		else
+		{
+			if (loopingList)
+			{
+				_nodesList[i]->next = _nodesList[0];
+			}
+		}
+	}
+}
+
 void NodeHandler::DisplayNodes()
 {
 	int len = *(&_nodesList + 1) - _nodesList;
