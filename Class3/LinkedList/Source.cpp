@@ -4,7 +4,14 @@ int main()
 {
 	NodeHandler nh = NodeHandler();
 	nh.CreateNodes(10);
+
+	cout << endl << "Before Sorting: " << endl;
 	nh.DisplayNodes();
+
+	nh.SortNodes();
+	cout << endl << "After Sorting: " << endl;
+	nh.DisplayNodes();
+
 
 	return 0;
 }

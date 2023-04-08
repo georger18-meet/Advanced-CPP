@@ -10,8 +10,10 @@ public:
 	NodeHandler();
 
 	void CreateNodes(int amount);
+	void SortNodes();
 	void DisplayNodes();
 
 private:
-	Node* nodesList[10];
+	Node* _nodesList[10];
+	Node* _nodePtr;
 };

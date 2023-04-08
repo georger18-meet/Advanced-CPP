@@ -2,36 +2,60 @@
 
 NodeHandler::NodeHandler()
 {
-	nodesList[0] = 0;
+	_nodesList[0] = 0;
+	_nodePtr = _nodesList[0];
 }
 
 void NodeHandler::CreateNodes(int amount)
 {
 
-	int len = *(&nodesList + 1) - nodesList;
+	int len = *(&_nodesList + 1) - _nodesList;
 
 	for (size_t i = 0; i < len; i++)
 	{
 		Node* tempNode = new Node;
 		cout << "Insert Node Data Num: ";
 		cin >> tempNode->data;
-		nodesList[i] = tempNode;
+		_nodesList[i] = tempNode;
+	}
+
+	_nodePtr = _nodesList[0];
+}
+
+void NodeHandler::SortNodes()
+{
+	int len = *(&_nodesList + 1) - _nodesList;
+
+
+	Node* tempNode;
+
+	for (int i = 0; i < len - 1; i++)
+	{
+		for (int j = i + 1; j < len; j++)
+		{
+			if ((_nodesList[i]->data) > (_nodesList[j]->data))
+			{
+				tempNode = *(_nodesList + j);
+				*(_nodesList + j) = *(_nodesList + i);
+				*(_nodesList + i) = tempNode;
+			}
+		}
 	}
 }
 
 void NodeHandler::DisplayNodes()
 {
-	int len = *(&nodesList + 1) - nodesList;
+	int len = *(&_nodesList + 1) - _nodesList;
 
 	for (size_t i = 0; i < len; i++)
 	{
-		if (nodesList[i]->next == nullptr)
+		if (_nodesList[i]->next == nullptr)
 		{
-			cout << "Node: " << nodesList[i]->data << ", Next Pointer: NULL." << endl;
+			cout << "Node: " << _nodesList[i]->data << ", Next Pointer: NULL." << endl;
 		}
 		else
 		{
-			cout << "Node: " << nodesList[i]->data << ", Next Node: " << nodesList[i]->next->data << "." << endl;
+			cout << "Node: " << _nodesList[i]->data << ", Next Node: " << _nodesList[i]->next->data << "." << endl;
 		}
 	}
 }
