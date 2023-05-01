@@ -2,7 +2,7 @@
 
 int main() 
 {
-	//FileHandler fileHandler;
+	FileHandler fileHandler;
 
 	return 0;
 }

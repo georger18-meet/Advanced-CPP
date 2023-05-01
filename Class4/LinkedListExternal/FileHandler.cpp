@@ -8,7 +8,9 @@ FileHandler::FileHandler()
 
 void FileHandler::GetFile()
 {
-    newFile.open("LinkedListCMD.txt");
+    fstream MyFile("LinkedListInputs.txt");
+
+    newFile.open("LinkedListInputs.txt");
 }
 
 void FileHandler::AddToList()
@@ -21,20 +23,20 @@ void FileHandler::AddToList()
 
         while (getline(newFile, input))
         {
-            cout << input << endl;
+            cout << input << " -> ";
             switch (input[0])
             {
             case 'I':
-                cout << "its an EYE" << endl;
+                cout << "Insert" << endl;
                 break;
             case 'D':
-
+                cout << "Delete" << endl;
                 break;
             case 'P':
-
+                cout << "Print" << endl;
                 break;
             case 'E':
-
+                cout << "Empty" << endl;
                 break;
             default:
                 break;

@@ -13,5 +13,5 @@ public:
 	void AddToList();
 
 private:
-	ifstream newFile;
+	fstream newFile;
 };
