@@ -14,4 +14,6 @@ public:
 
 private:
 	fstream newFile;
+
+	string NumTranslate(string input) const;
 };
