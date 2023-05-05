@@ -1,81 +1,151 @@
 #include "NodeHandler.h"
 
-NodeHandler::NodeHandler()
+void NodeHandler::InsertNode(int data)
 {
-	_nodesList[0] = 0;
-	_nodePtr = _nodesList[0];
+	// Creating the New Node
+	Node* newNode = new Node();
+	newNode->data = data;
+
+	// Setting the HeadPtrNode
+	if (_headPtrNode == nullptr)
+	{
+		_headPtrNode = newNode;
+		return;
+	}
+
+	// Go to the List's last element
+	Node* tempNode = _headPtrNode;
+	while (tempNode->next != nullptr)
+	{
+		// Move to next element
+		tempNode = tempNode->next;
+	}
+
+	// Insert New Node as Last Element
+	tempNode->next = newNode;
+}
+
+void NodeHandler::DeleteNode(int data)
+{
+	cout << "Deleting Node with Data Value " << data << endl;
+
+	Node* tempNodeOne = _headPtrNode;
+	Node* tempNodeTwo = nullptr;
+
+	// Check if the List is Empty.
+	if (_headPtrNode == nullptr)
+	{
+		cout << "List Is Empty!" << endl;
+		return;
+	}
+
+	while (tempNodeOne != nullptr)
+	{
+		if (tempNodeOne->data == data)
+		{
+			if (tempNodeOne == _headPtrNode)	// If deleting Head
+
+			{
+				_headPtrNode = _headPtrNode->next;
+				delete tempNodeOne;
+			}
+			else
+			{
+				tempNodeTwo->next = tempNodeOne->next;
+				delete tempNodeOne;
+			}
+			cout << "Deleted Node Successfully!" << endl << endl;
+			return;
+		}
+		tempNodeTwo = tempNodeOne;
+		tempNodeOne = tempNodeOne->next;
+	}
+
+	cout << "Node Was Not Found!!!" << endl << endl;
+}
+
+void NodeHandler::DisplayList()
+{
+	Node* tempNode = _headPtrNode;
+
+	// Check if the List is Empty.
+	if (_headPtrNode == nullptr)
+	{
+		cout << "List Is Empty!" << endl << endl;
+		return;
+	}
+
+	// Print Nodes
+	while (tempNode != nullptr)
+	{
+		if (tempNode->next == nullptr)
+		{
+			cout << "Node: " << tempNode->data << ", Next Pointer: NULL." << endl;
+		}
+		else
+		{
+			cout << "Node: " << tempNode->data << ", Next Node: " << tempNode->next->data << "." << endl;
+		}
+
+		tempNode = tempNode->next;
+	}
+
+	cout << endl;
+}
+
+void NodeHandler::SortList()
+{
+	// Check if the List is Empty.
+	if (_headPtrNode == nullptr)
+	{
+		cout << "List Is Empty!" << endl << endl;
+		return;
+	}
+
+	Node* tempNodeOne = _headPtrNode;
+	Node* tempNodeTwo = nullptr;
+	Node* tempNodeThree = nullptr;
+	int listLen = 0;
+
+	// Find length of the list.
+	while (tempNodeOne != nullptr) {
+		tempNodeOne = tempNodeOne->next;
+		listLen++;
+	}
+
+	// Sort Algorithm
+	for (int i = 0; i < listLen; i++)
+	{
+		tempNodeOne = _headPtrNode;
+		while (tempNodeOne != nullptr)
+		{
+			if (tempNodeOne->next != nullptr)
+			{
+				while (tempNodeOne->next != nullptr && tempNodeOne->data > tempNodeOne->next->data)
+				{
+					tempNodeTwo = tempNodeOne->next;
+					tempNodeOne->next = tempNodeTwo->next;
+					tempNodeTwo->next = tempNodeOne;
+					tempNodeThree->next = tempNodeTwo;
+
+					tempNodeThree = tempNodeThree->next;
+					tempNodeTwo = tempNodeOne->next;
+				}
+			}
+
+			tempNodeThree = tempNodeOne;
+			tempNodeOne = tempNodeOne->next;
+		}
+	}
 }
 
 void NodeHandler::CreateNodes(int amount)
 {
-
-	int len = *(&_nodesList + 1) - _nodesList;
-
-	for (size_t i = 0; i < len; i++)
+	int tempNum;
+	for (int i = 0; i < amount; i++)
 	{
-		Node* tempNode = new Node;
 		cout << "Insert Node Data Num: ";
-		cin >> tempNode->data;
-		_nodesList[i] = tempNode;
-	}
-
-	_nodePtr = _nodesList[0];
-}
-
-void NodeHandler::SortNodes()
-{
-	int len = *(&_nodesList + 1) - _nodesList;
-
-
-	Node* tempNode;
-
-	for (int i = 0; i < len - 1; i++)
-	{
-		for (int j = i + 1; j < len; j++)
-		{
-			if ((_nodesList[i]->data) > (_nodesList[j]->data))
-			{
-				tempNode = *(_nodesList + j);
-				*(_nodesList + j) = *(_nodesList + i);
-				*(_nodesList + i) = tempNode;
-			}
-		}
-	}
-}
-
-void NodeHandler::AffixNodesNextPointers(bool loopingList)
-{
-	int len = *(&_nodesList + 1) - _nodesList;
-
-	for (size_t i = 0; i < len; i++)
-	{
-		if (i != len - 1)
-		{
-			_nodesList[i]->next = _nodesList[i + 1];
-		}
-		else
-		{
-			if (loopingList)
-			{
-				_nodesList[i]->next = _nodesList[0];
-			}
-		}
-	}
-}
-
-void NodeHandler::DisplayNodes()
-{
-	int len = *(&_nodesList + 1) - _nodesList;
-
-	for (size_t i = 0; i < len; i++)
-	{
-		if (_nodesList[i]->next == nullptr)
-		{
-			cout << "Node: " << _nodesList[i]->data << ", Next Pointer: NULL." << endl;
-		}
-		else
-		{
-			cout << "Node: " << _nodesList[i]->data << ", Next Node: " << _nodesList[i]->next->data << "." << endl;
-		}
+		cin >> tempNum;
+		InsertNode(tempNum);
 	}
 }

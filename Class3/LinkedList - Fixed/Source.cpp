@@ -3,22 +3,19 @@
 int main()
 {
 	NodeHandler nh = NodeHandler();
-	nh.CreateNodes(10);
+
+	nh.CreateNodes(5);
 
 	cout << endl << "Before Sorting: " << endl;
-	nh.DisplayNodes();
+	nh.DisplayList();
 
-	nh.SortNodes();
 	cout << endl << "After Sorting: " << endl;
-	nh.DisplayNodes();
+	nh.SortList();
+	nh.DisplayList();
 
-	nh.AffixNodesNextPointers(false);
-	cout << endl << "Next Pointers Affixed, Not Looping List: " << endl;
-	nh.DisplayNodes();
-
-	nh.AffixNodesNextPointers(true);
-	cout << endl << "Next Pointers Affixed, Looping List: " << endl;
-	nh.DisplayNodes();
+	nh.DeleteNode(2);
+	cout << endl << "After Deleting Node: " << endl;
+	nh.DisplayList();
 
 	return 0;
 }

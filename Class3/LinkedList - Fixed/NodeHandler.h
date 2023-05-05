@@ -7,14 +7,15 @@ using namespace std;
 class NodeHandler
 {
 public:
-	NodeHandler();
+	NodeHandler() { _headPtrNode = nullptr; }
+
+	void InsertNode(int data);
+	void DeleteNode(int data);
+	void DisplayList();
+	void SortList();
 
 	void CreateNodes(int amount);
-	void SortNodes();
-	void AffixNodesNextPointers(bool loopingList);
-	void DisplayNodes();
 
 private:
-	Node* _nodesList[10];
-	Node* _nodePtr;
+	Node* _headPtrNode;
 };
