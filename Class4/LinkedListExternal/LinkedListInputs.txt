@@ -4,8 +4,12 @@ I1
 I5
 I3
 P
+I3
+P
 D3
 I10
+P
+D3
 P
 E
 P

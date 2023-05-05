@@ -2,6 +2,19 @@
 
 void NodeHandler::InsertNode(int data)
 {
+	// Check for Existing Instance
+	Node* tempNode = _headPtrNode;
+	while (tempNode != nullptr)
+	{
+		if (tempNode->data == data)
+		{
+			tempNode->instances++;
+			return;
+		}
+		// Move to next element
+		tempNode = tempNode->next;
+	}
+
 	// Creating the New Node
 	Node* newNode = new Node();
 	newNode->data = data;
@@ -14,7 +27,7 @@ void NodeHandler::InsertNode(int data)
 	}
 
 	// Go to the List's last element
-	Node* tempNode = _headPtrNode;
+	tempNode = _headPtrNode;
 	while (tempNode->next != nullptr)
 	{
 		// Move to next element
@@ -28,6 +41,23 @@ void NodeHandler::InsertNode(int data)
 void NodeHandler::DeleteNode(int data)
 {
 	cout << "Deleting Node with Data Value " << data << endl;
+
+	// Check for Existing Instance
+	Node* tempNode = _headPtrNode;
+	while (tempNode != nullptr)
+	{
+		if (tempNode->data == data)
+		{
+			if (tempNode->instances > 1)
+			{
+				tempNode->instances--;
+				cout << "Deleted Instance from Node Successfully!" << endl << endl;
+				return;
+			}
+		}
+		// Move to next element
+		tempNode = tempNode->next;
+	}
 
 	Node* tempNodeOne = _headPtrNode;
 	Node* tempNodeTwo = nullptr;
@@ -80,11 +110,11 @@ void NodeHandler::DisplayList()
 	{
 		if (tempNode->next == nullptr)
 		{
-			cout << "Node: " << tempNode->data << ", Next Pointer: NULL." << endl;
+			cout << "Node: " << tempNode->data << ", Instances: " << tempNode->instances << ", Next Pointer: NULL." << endl;
 		}
 		else
 		{
-			cout << "Node: " << tempNode->data << ", Next Node: " << tempNode->next->data << "." << endl;
+			cout << "Node: " << tempNode->data << ", Instances: " << tempNode->instances << ", Next Node: " << tempNode->next->data << "." << endl;
 		}
 
 		tempNode = tempNode->next;
