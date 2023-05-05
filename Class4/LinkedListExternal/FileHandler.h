@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "NodeHandler.h"
 using namespace std;
 
 class FileHandler
@@ -16,4 +17,6 @@ private:
 	fstream newFile;
 
 	string NumTranslate(string input) const;
+
+	NodeHandler nh;
 };

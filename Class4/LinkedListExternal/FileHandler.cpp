@@ -22,21 +22,27 @@ void FileHandler::AddToList()
 		while (getline(newFile, input))
 		{
 			cout << input << " -> " << NumTranslate(input);
-			switch (input[0])
+			switch (toupper(input[0]))
 			{
 			case 'I':
 				cout << " Insert" << endl;
+				nh.InsertNode(stoi(NumTranslate(input)));
+				//nh.SortList();
 				break;
 			case 'D':
 				cout << " Delete" << endl;
+				nh.DeleteNode(stoi(NumTranslate(input)));
 				break;
 			case 'P':
 				cout << " Print" << endl;
+				nh.DisplayList();
 				break;
 			case 'E':
 				cout << " Empty" << endl;
+				nh.EmptyList();
 				break;
 			default:
+				cout << " Invalid Input!" << endl;
 				break;
 			}
 		}

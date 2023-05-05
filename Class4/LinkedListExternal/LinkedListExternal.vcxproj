@@ -128,10 +128,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="FileHandler.cpp" />
+    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="NodeHandler.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FileHandler.h" />
+    <ClInclude Include="Node.h" />
+    <ClInclude Include="NodeHandler.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="LinkedListInputs.txt" />
