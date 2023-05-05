@@ -90,7 +90,7 @@ void NodeHandler::DisplayList()
 		tempNode = tempNode->next;
 	}
 
-	cout << endl;
+	std::cout << endl;
 }
 
 void NodeHandler::SortList()
@@ -126,10 +126,17 @@ void NodeHandler::SortList()
 					tempNodeTwo = tempNodeOne->next;
 					tempNodeOne->next = tempNodeTwo->next;
 					tempNodeTwo->next = tempNodeOne;
-					tempNodeThree->next = tempNodeTwo;
 
-					tempNodeThree = tempNodeThree->next;
-					tempNodeTwo = tempNodeOne->next;
+					if (tempNodeOne != _headPtrNode)
+					{
+						tempNodeThree->next = tempNodeTwo;
+						tempNodeThree = tempNodeThree->next;
+						tempNodeTwo = tempNodeOne->next;
+					}
+					else
+					{
+						_headPtrNode = tempNodeTwo;
+					}
 				}
 			}
 
@@ -137,6 +144,8 @@ void NodeHandler::SortList()
 			tempNodeOne = tempNodeOne->next;
 		}
 	}
+
+	//cout << "Sorted Successfully!" << endl << endl;
 }
 
 void NodeHandler::CreateNodes(int amount)

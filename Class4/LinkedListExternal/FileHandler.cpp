@@ -27,7 +27,7 @@ void FileHandler::AddToList()
 			case 'I':
 				cout << " Insert" << endl;
 				nh.InsertNode(stoi(NumTranslate(input)));
-				//nh.SortList();
+				nh.SortList();
 				break;
 			case 'D':
 				cout << " Delete" << endl;
@@ -41,6 +41,10 @@ void FileHandler::AddToList()
 				cout << " Empty" << endl;
 				nh.EmptyList();
 				break;
+			//case 'S':
+			//	cout << " Sort" << endl;
+			//	nh.SortList();
+			//	break;
 			default:
 				cout << " Invalid Input!" << endl;
 				break;
