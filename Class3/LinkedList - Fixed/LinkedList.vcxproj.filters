@@ -18,30 +18,19 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FileHandler.cpp">
+    <ClCompile Include="NodeHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Node.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NodeHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FileHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NodeHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="LinkedListInputs.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
   </ItemGroup>
 </Project>

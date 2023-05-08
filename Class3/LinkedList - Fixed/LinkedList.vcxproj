@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{9def634b-5f4e-4f45-bbf9-a23fc20a8768}</ProjectGuid>
-    <RootNamespace>LinkedListExternal</RootNamespace>
+    <ProjectGuid>{dfc20b22-2abf-48db-a33e-3d3424f9cb89}</ProjectGuid>
+    <RootNamespace>LinkedList</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,18 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="FileHandler.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="NodeHandler.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="FileHandler.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="NodeHandler.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="LinkedListInputs.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
