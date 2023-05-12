@@ -1,6 +1,8 @@
 {'items':
 	[
 		{'type':'i','number':7},
-		{'type':'i','number':6}
+		{'type':'i','number':6},
+		{'type':'i','number':10},
+		{'type':'d','number':6}
 	]
 }
