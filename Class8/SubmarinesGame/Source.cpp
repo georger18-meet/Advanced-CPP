@@ -4,11 +4,11 @@
 
 using namespace std;
 
-void guess(bool t) {
+void Guess(bool t) {
 
 }
 
-void showWinner() {
+void ShowWinner() {
 
 }
 
@@ -21,10 +21,10 @@ int main()
     b1.BuildBoard();
     b2.BuildBoard();
     while (!win) {
-        guess(turn);
+        Guess(turn);
         turn = !turn;
     }
-    showWinner();
+    ShowWinner();
 
     return 0;
 }
