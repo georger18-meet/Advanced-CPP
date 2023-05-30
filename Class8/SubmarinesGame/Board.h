@@ -1,6 +1,7 @@
 #pragma once
 #include "Sub.h"
-#include <string> 
+#include <string>
+#include <cstdlib>
 #include <iostream>
 using namespace std;
 
@@ -18,6 +19,6 @@ private:
 	int board[12][12];
 	int subSizes[5] = { 5,4,3,3,2 };
 
-	void GetLocation(int i, int* x, int* y, int* z);
+	void GetRandSubLocation(int* x, int* y, int* z);
 };
 

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <time.h>
 
 #include "board.h"
 
@@ -14,9 +15,12 @@ void ShowWinner() {
 
 int main()
 {
+    srand(time(0));
+
+
     Board b1("Board 1"), b2("Board 2");
-    bool win = false;
-    bool turn = false;
+    //bool win = false;
+    //bool turn = false;
 
     b1.BuildBoard();
     b2.BuildBoard();
@@ -24,11 +28,11 @@ int main()
     b1.DisplayBoard();
     b2.DisplayBoard();
 
-    while (!win) {
-        Guess(turn);
-        turn = !turn;
-    }
-    ShowWinner();
+    //while (!win) {
+    //    Guess(turn);
+    //    turn = !turn;
+    //}
+    //ShowWinner();
 
     return 0;
 }

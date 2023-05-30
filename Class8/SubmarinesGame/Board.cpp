@@ -7,10 +7,13 @@ Board::Board(string name)
 
 void Board::BuildBoard()
 {
+	int subCount = sizeof subs / sizeof subs[0];
+
 	int x, y, d;
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < subCount; i++)
 	{
-		GetLocation(subSizes[i], &x, &y, &d);
+		GetRandSubLocation(&x, &y, &d);
+		cout << x << "," << y << "," << d << endl;
 		subs[i].BuildSub(subSizes[i], x, y, d);
 	}
 }
@@ -47,7 +50,15 @@ void Board::DisplayBoard()
 	cout << endl;
 }
 
-void Board::GetLocation(int i, int* x, int* y, int* z)
+void Board::GetRandSubLocation(int* x, int* y, int* z)
 {
+	int rows = sizeof board / sizeof board[0];
 
+	int cols = sizeof board[0] / sizeof(int);
+
+	*y =  rand() % rows;
+
+	*x = rand() % cols;
+
+	*z = rand() % 2;
 }
