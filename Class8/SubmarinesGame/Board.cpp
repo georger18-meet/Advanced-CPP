@@ -35,7 +35,15 @@ void Board::DisplayBoard()
 			}
 			else
 			{
-				cout << "~";
+				// Determine Node State
+				if (true)
+				{
+					cout << "s";
+				}
+				else
+				{
+					cout << "~";
+				}
 
 				int spaces = to_string(x).length();
 				for (int i = 0; i < spaces; i++)
@@ -56,9 +64,30 @@ void Board::GetRandSubLocation(int* x, int* y, int* z)
 
 	int cols = sizeof board[0] / sizeof(int);
 
-	*y =  rand() % rows;
+	*y = rand() % rows;
 
 	*x = rand() % cols;
 
 	*z = rand() % 2;
+}
+
+int* Board::GetAllSubCoordinates()
+{
+	int const subCount = sizeof subs / sizeof subs[0];
+
+	int coords[subCount][subCount];
+
+	int x = sizeof coords[0] / sizeof(int);
+	int y = sizeof coords / sizeof coords[0];
+
+
+	for (int i = 0; i < subCount; i++)
+	{
+		for (int i = 0; i < x; i++)
+		{
+			coords[0][0] = 1;
+		}
+	}
+
+	return *coords;
 }

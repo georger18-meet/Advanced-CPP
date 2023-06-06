@@ -20,5 +20,7 @@ private:
 	int subSizes[5] = { 5,4,3,3,2 };
 
 	void GetRandSubLocation(int* x, int* y, int* z);
+
+	int* GetAllSubCoordinates();
 };
 
