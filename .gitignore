@@ -9,6 +9,7 @@
 *.idb
 *.ilk
 *.recipe
+*.opendb
 
 # Prerequisites
 *.d
