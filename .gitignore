@@ -3,6 +3,12 @@
 *.suo
 *.db
 *.ipch
+*.pdb
+*.log
+*.tlog
+*.idb
+*.ilk
+*.recipe
 
 # Prerequisites
 *.d
