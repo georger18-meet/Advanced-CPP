@@ -2,12 +2,42 @@
 
 void Board::BuildBoard()
 {
+	int rows = sizeof board / sizeof board[0];
+
+	int cols = sizeof board[0] / sizeof(int);
+
 	int subCount = sizeof subs / sizeof subs[0];
 
 	int x, y, d;
 	for (int i = 0; i < subCount; i++)
 	{
-		GetRandSubLocation(&x, &y, &d);
+		bool checksOut = false;
+		while (!checksOut)
+		{
+			GetRandSubLocation(&x, &y, &d);
+			if (d == 0) // Check Y Out of Bounds
+			{
+				if (y + subSizes[i] - 1 > rows - 1)
+				{
+					checksOut = false;
+				}
+				else
+				{
+					checksOut = true;
+				}
+			}
+			else // Check X Out of Bounds
+			{
+				if (x + subSizes[i] - 1 > cols - 1)
+				{
+					checksOut = false;
+				}
+				else
+				{
+					checksOut = true;
+				}
+			}
+		}
 		cout << x << "," << y << "," << d << endl;
 		subs[i].BuildSub(subSizes[i], x, y, d);
 	}
