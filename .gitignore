@@ -10,6 +10,9 @@
 *.ilk
 *.recipe
 *.opendb
+*.db-shm
+*.db-wal
+
 
 # Prerequisites
 *.d
