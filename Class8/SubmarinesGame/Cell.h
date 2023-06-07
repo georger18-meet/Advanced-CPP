@@ -1,18 +1,21 @@
 #pragma once
+#include "Vector2.h"
 
 class Cell
 {
 public:
+
+	Cell() { status = 0; }
+
 	void SetPos(int x, int y);
 	void ChangeStatus(int value);
 
-	int GetX() { return posX; }
-	int GetY() { return posY; }
+	int GetX() { return coords.GetX(); }
+	int GetY() { return coords.GetY(); }
 	int GetStatus() { return status; }
 
 private:
-	int posX;
-	int posY;
+	Vector2 coords;
 	int status;
 };
 

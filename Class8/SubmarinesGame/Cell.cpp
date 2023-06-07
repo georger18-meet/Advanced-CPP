@@ -2,8 +2,8 @@
 
 void Cell::SetPos(int x, int y)
 {
-	posX = x;
-	posY = y;
+	coords.SetX(x);
+	coords.SetY(y);
 }
 
 void Cell::ChangeStatus(int value)

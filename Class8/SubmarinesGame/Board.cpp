@@ -1,10 +1,5 @@
 #include "Board.h"
 
-Board::Board(string name)
-	: name(name)
-{
-}
-
 void Board::BuildBoard()
 {
 	int subCount = sizeof subs / sizeof subs[0];
@@ -36,13 +31,13 @@ void Board::DisplayBoard()
 			else
 			{
 				// Determine Node State
-				if (true)
+				if (CheckIfSubIsAt(x, y))
 				{
-					cout << "s";
+					cout << "S";
 				}
 				else
 				{
-					cout << "~";
+					cout << " ";
 				}
 
 				int spaces = to_string(x).length();
@@ -71,23 +66,20 @@ void Board::GetRandSubLocation(int* x, int* y, int* z)
 	*z = rand() % 2;
 }
 
-int* Board::GetAllSubCoordinates()
+bool Board::CheckIfSubIsAt(int xCoordinate, int yCoordinate)
 {
-	int const subCount = sizeof subs / sizeof subs[0];
+	int subCount = sizeof subs / sizeof subs[0];
 
-	int coords[subCount][subCount];
-
-	int x = sizeof coords[0] / sizeof(int);
-	int y = sizeof coords / sizeof coords[0];
-
-
-	for (int i = 0; i < subCount; i++)
+	for (int s = 0; s < subCount; s++)
 	{
-		for (int i = 0; i < x; i++)
+		for (int c = 0; c < 5; c++)
 		{
-			coords[0][0] = 1;
+			if (subs[s].GetCells()[c].GetStatus() != 0 && subs[s].GetCells()[c].GetX() == xCoordinate && subs[s].GetCells()[c].GetY() == yCoordinate)
+			{
+				return true;
+			}
 		}
 	}
 
-	return *coords;
+	return false;
 }

@@ -8,7 +8,7 @@ using namespace std;
 class Board
 {
 public:
-	Board(string name);
+	Board(string nameVal) { name = nameVal; };
 
 	void BuildBoard();
 	void DisplayBoard();
@@ -21,6 +21,6 @@ private:
 
 	void GetRandSubLocation(int* x, int* y, int* z);
 
-	int* GetAllSubCoordinates();
+	bool CheckIfSubIsAt(int xCoordinate, int yCoordinate);
 };
 
