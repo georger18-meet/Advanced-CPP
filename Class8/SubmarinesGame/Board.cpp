@@ -17,7 +17,7 @@ void Board::BuildBoard()
 			GetRandSubLocation(&x, &y, &d);
 			if (d == 0) // Check Y Out of Bounds
 			{
-				if (y + subSizes[i] - 1 > rows - 1)
+				if (y + subSizes[i] - 1 > rows - 1 || CheckSubInterference(subSizes[i], x, y, d))
 				{
 					checksOut = false;
 				}
@@ -28,7 +28,7 @@ void Board::BuildBoard()
 			}
 			else // Check X Out of Bounds
 			{
-				if (x + subSizes[i] - 1 > cols - 1)
+				if (x + subSizes[i] - 1 > cols - 1 || CheckSubInterference(subSizes[i], x, y, d))
 				{
 					checksOut = false;
 				}
@@ -67,7 +67,7 @@ void Board::DisplayBoard()
 				}
 				else
 				{
-					cout << " ";
+					cout << ".";
 				}
 
 				int spaces = to_string(x).length();
@@ -105,6 +105,29 @@ bool Board::CheckIfSubIsAt(int xCoordinate, int yCoordinate)
 		for (int c = 0; c < 5; c++)
 		{
 			if (subs[s].GetCells()[c].GetStatus() != 0 && subs[s].GetCells()[c].GetX() == xCoordinate && subs[s].GetCells()[c].GetY() == yCoordinate)
+			{
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+bool Board::CheckSubInterference(int size, int x, int y, int d)
+{
+	for (int sc = 0; sc < size; sc++)
+	{
+		if (d == 0) // Check Y Interference
+		{
+			if (CheckIfSubIsAt(x, y + sc))
+			{
+				return true;
+			}
+		}
+		else // Check X Interference
+		{
+			if (CheckIfSubIsAt(x + sc, y))
 			{
 				return true;
 			}

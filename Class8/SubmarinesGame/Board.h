@@ -22,5 +22,7 @@ private:
 	void GetRandSubLocation(int* x, int* y, int* z);
 
 	bool CheckIfSubIsAt(int xCoordinate, int yCoordinate);
+
+	bool CheckSubInterference(int size, int x, int y, int d);
 };
 
