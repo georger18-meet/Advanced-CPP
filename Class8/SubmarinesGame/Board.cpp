@@ -108,6 +108,36 @@ bool Board::AttackPoint(int x, int y)
 	return false;
 }
 
+bool Board::CheckAllSubsGone()
+{
+	int subCount = sizeof subs / sizeof subs[0];
+
+	int validSubCells = 0;
+
+	int hitSubCells = 0;
+
+	for (int s = 0; s < subCount; s++)
+	{
+		for (int c = 0; c < 5; c++)
+		{
+			if (subs[s].GetCells()[c].GetStatus() != 0)
+			{
+				validSubCells++;
+				if (subs[s].GetCells()[c].GetStatus() == 2)
+				{
+					hitSubCells++;
+				}
+			}
+		}
+	}
+
+	if (validSubCells == hitSubCells)
+	{
+		return true;
+	}
+	return false;
+}
+
 void Board::GetRandSubLocation(int* x, int* y, int* z)
 {
 	int rows = sizeof board / sizeof board[0];

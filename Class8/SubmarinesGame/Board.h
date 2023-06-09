@@ -14,6 +14,7 @@ public:
 	void DisplayBoard();
 
 	bool AttackPoint(int x, int y);
+	bool CheckAllSubsGone();
 
 	string GetName() { return name; }
 	int(&GetBoard())[12][12]{ return board; }

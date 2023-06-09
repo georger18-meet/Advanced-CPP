@@ -1,11 +1,12 @@
 #include <iostream>
 #include <time.h>
-
+#include<chrono>
+#include<thread>
 #include "board.h"
 
 using namespace std;
 
-string Guess(bool t, Board* b1, Board* b2) 
+string Guess(bool t, Board* b1, Board* b2)
 {
 	string tempResult;
 
@@ -50,9 +51,28 @@ string Guess(bool t, Board* b1, Board* b2)
 	return tempResult;
 }
 
-void ShowWinner() 
+bool CheckWin(Board* b1, Board* b2)
 {
+	if (b1->CheckAllSubsGone() || b2->CheckAllSubsGone())
+	{
+		return true;
+	}
+	return false;
+}
 
+void ShowWinner(bool w, bool t, Board* b1, Board* b2)
+{
+	if (w)
+	{
+		if (!t)
+		{
+			cout << b1->GetName() << " Has Won!" << endl;
+		}
+		else
+		{
+			cout << b2->GetName() << " Has Won!" << endl;
+		}
+	}
 }
 
 int main()
@@ -71,16 +91,19 @@ int main()
 	while (!win) {
 		system("cls");
 		string tempResult = Guess(turn, &b1, &b2);
-		turn = !turn;
 
 		b1.DisplayBoard();
 		b2.DisplayBoard();
 
 		cout << tempResult << endl;
-		cout << "Press Enter to Continue";
-		cin.ignore();
+		//cout << "Press Enter to Continue";
+		//cin.ignore();
+		this_thread::sleep_for(chrono::milliseconds(100));
+
+		win = CheckWin(&b1, &b2);
+		turn = !turn;
 	}
-	ShowWinner();
+	ShowWinner(win, turn, &b1, &b2);
 
 	return 0;
 }
