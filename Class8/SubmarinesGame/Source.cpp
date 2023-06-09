@@ -16,7 +16,7 @@ string Guess(bool t, Board* b1, Board* b2)
 
 	int randX = 0;
 
-	if (!t)
+	if (t)
 	{
 		int rows = sizeof b1->GetBoard() / sizeof b1->GetBoard()[0];
 
@@ -82,7 +82,7 @@ int main()
 
 	Board b1("Board 1"), b2("Board 2");
 	bool win = false;
-	bool turn = false;
+	bool turn = true;
 
 	b1.BuildBoard();
 	b2.BuildBoard();
@@ -90,18 +90,21 @@ int main()
 
 	while (!win) {
 		system("cls");
+		turn = !turn;
 		string tempResult = Guess(turn, &b1, &b2);
 
 		b1.DisplayBoard();
 		b2.DisplayBoard();
 
+		if (!turn) cout << b1.GetName() << "'s Turn" << endl;
+		else cout << b2.GetName() << "'s Turn" << endl;
 		cout << tempResult << endl;
+
 		//cout << "Press Enter to Continue";
 		//cin.ignore();
 		this_thread::sleep_for(chrono::milliseconds(100));
 
 		win = CheckWin(&b1, &b2);
-		turn = !turn;
 	}
 	ShowWinner(win, turn, &b1, &b2);
 
