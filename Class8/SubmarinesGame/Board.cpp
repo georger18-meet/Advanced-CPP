@@ -60,10 +60,19 @@ void Board::DisplayBoard()
 			}
 			else
 			{
+				Cell* tempCell = nullptr;
+				tempCell = CheckIfSubIsAt(x, y);
 				// Determine Node State
-				if (CheckIfSubIsAt(x, y))
+				if (tempCell != nullptr)
 				{
-					cout << "S";
+					if (tempCell->GetStatus() == 1)
+					{
+						cout << "S";
+					}
+					else if (tempCell->GetStatus() == 2)
+					{
+						cout << "X";
+					}
 				}
 				else
 				{
@@ -83,6 +92,22 @@ void Board::DisplayBoard()
 	cout << endl;
 }
 
+bool Board::AttackPoint(int x, int y)
+{
+	Cell* tempCell = nullptr;
+	tempCell = CheckIfSubIsAt(x, y);
+
+	if (tempCell != nullptr)
+	{
+		if (tempCell->GetStatus() == 1)
+		{
+			tempCell->ChangeStatus(2);
+			return true;
+		}
+	}
+	return false;
+}
+
 void Board::GetRandSubLocation(int* x, int* y, int* z)
 {
 	int rows = sizeof board / sizeof board[0];
@@ -96,8 +121,10 @@ void Board::GetRandSubLocation(int* x, int* y, int* z)
 	*z = rand() % 2;
 }
 
-bool Board::CheckIfSubIsAt(int xCoordinate, int yCoordinate)
+Cell* Board::CheckIfSubIsAt(int xCoordinate, int yCoordinate)
 {
+	Cell* foundCell = nullptr;
+
 	int subCount = sizeof subs / sizeof subs[0];
 
 	for (int s = 0; s < subCount; s++)
@@ -106,12 +133,13 @@ bool Board::CheckIfSubIsAt(int xCoordinate, int yCoordinate)
 		{
 			if (subs[s].GetCells()[c].GetStatus() != 0 && subs[s].GetCells()[c].GetX() == xCoordinate && subs[s].GetCells()[c].GetY() == yCoordinate)
 			{
-				return true;
+				foundCell = &subs[s].GetCells()[c];
+				return foundCell;
 			}
 		}
 	}
 
-	return false;
+	return foundCell;
 }
 
 bool Board::CheckSubInterference(int size, int x, int y, int d)
@@ -120,14 +148,14 @@ bool Board::CheckSubInterference(int size, int x, int y, int d)
 	{
 		if (d == 0) // Check Y Interference
 		{
-			if (CheckIfSubIsAt(x, y + sc))
+			if (CheckIfSubIsAt(x, y + sc) != nullptr)
 			{
 				return true;
 			}
 		}
 		else // Check X Interference
 		{
-			if (CheckIfSubIsAt(x + sc, y))
+			if (CheckIfSubIsAt(x + sc, y) != nullptr)
 			{
 				return true;
 			}

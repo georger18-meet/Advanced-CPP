@@ -13,6 +13,11 @@ public:
 	void BuildBoard();
 	void DisplayBoard();
 
+	bool AttackPoint(int x, int y);
+
+	string GetName() { return name; }
+	int(&GetBoard())[12][12]{ return board; }
+
 private:
 	string name;
 	Sub subs[5];
@@ -21,7 +26,7 @@ private:
 
 	void GetRandSubLocation(int* x, int* y, int* z);
 
-	bool CheckIfSubIsAt(int xCoordinate, int yCoordinate);
+	Cell* CheckIfSubIsAt(int xCoordinate, int yCoordinate);
 
 	bool CheckSubInterference(int size, int x, int y, int d);
 };
