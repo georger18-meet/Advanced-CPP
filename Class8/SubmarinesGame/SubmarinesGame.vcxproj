@@ -129,12 +129,14 @@
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Cell.cpp" />
+    <ClCompile Include="GameFunctions.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Sub.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
     <ClInclude Include="Cell.h" />
+    <ClInclude Include="GameFunctions.h" />
     <ClInclude Include="Sub.h" />
     <ClInclude Include="Vector2.h" />
   </ItemGroup>
