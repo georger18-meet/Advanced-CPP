@@ -5,6 +5,7 @@ struct Vector2
 public:
 
 	Vector2() { x = 0, y = 0; }
+	Vector2(int xVal, int yVal) { x = xVal, y = yVal; }
 
 	int GetX() { return x; }
 	int GetY() { return y; }

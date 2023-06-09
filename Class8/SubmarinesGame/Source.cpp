@@ -1,12 +1,25 @@
 #include <iostream>
 #include <time.h>
-#include<chrono>
-#include<thread>
+#include <chrono>
+#include <thread>
+#include <vector>
 #include "board.h"
 
 using namespace std;
 
-string Guess(bool t, Board* b1, Board* b2)
+bool CheckPointAlreadyHit(int x, int y, vector<Vector2> ph)
+{
+	for (int i = 0; i < ph.size(); i++)
+	{
+		if (ph[i].GetX() == x && ph[i].GetY() == y)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+string Guess(bool t, Board* b1, Board* b2, vector<Vector2> ph1, vector<Vector2> ph2)
 {
 	string tempResult;
 
@@ -22,9 +35,17 @@ string Guess(bool t, Board* b1, Board* b2)
 
 		int cols = sizeof b1->GetBoard()[0] / sizeof(int);
 
-		int randY = rand() % rows;
+		randY = rand() % rows;
 
-		int randX = rand() % cols;
+		randX = rand() % cols;
+
+		while (CheckPointAlreadyHit(randX, randY, ph1))
+		{
+			randY = rand() % rows;
+
+			randX = rand() % cols;
+		}
+		ph1.push_back(Vector2(randX, randY));
 
 		wasHit = b1->AttackPoint(randX, randY);
 
@@ -36,9 +57,17 @@ string Guess(bool t, Board* b1, Board* b2)
 
 		int cols = sizeof b2->GetBoard()[0] / sizeof(int);
 
-		int randY = rand() % rows;
+		randY = rand() % rows;
 
-		int randX = rand() % cols;
+		randX = rand() % cols;
+
+		while (CheckPointAlreadyHit(randX, randY, ph2))
+		{
+			randY = rand() % rows;
+
+			randX = rand() % cols;
+		}
+		ph2.push_back(Vector2(randX, randY));
 
 		wasHit = b2->AttackPoint(randX, randY);
 
@@ -81,6 +110,7 @@ int main()
 
 
 	Board b1("Board 1"), b2("Board 2");
+	vector<Vector2> pointsHit1, pointsHit2;
 	bool win = false;
 	bool turn = true;
 
@@ -91,7 +121,7 @@ int main()
 	while (!win) {
 		system("cls");
 		turn = !turn;
-		string tempResult = Guess(turn, &b1, &b2);
+		string tempResult = Guess(turn, &b1, &b2, pointsHit1, pointsHit2);
 
 		b1.DisplayBoard();
 		b2.DisplayBoard();
@@ -102,7 +132,7 @@ int main()
 
 		//cout << "Press Enter to Continue";
 		//cin.ignore();
-		this_thread::sleep_for(chrono::milliseconds(100));
+		this_thread::sleep_for(chrono::milliseconds(10));
 
 		win = CheckWin(&b1, &b2);
 	}
