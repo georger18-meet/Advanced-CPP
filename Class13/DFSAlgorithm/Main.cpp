@@ -1,44 +1,9 @@
 ﻿// DFS algorithm in C++
-
 #include <iostream>
 #include <list>
+#include "Graph.h"
 using namespace std;
 
-class Graph {
-    int numVertices;
-    list<int>* adjLists;
-    bool* visited;
-
-public:
-    Graph(int V);
-    void addEdge(int src, int dest);
-    void DFS(int vertex);
-};
-
-// Initialize graph
-Graph::Graph(int vertices) {
-    numVertices = vertices;
-    adjLists = new list<int>[vertices];
-    visited = new bool[vertices];
-}
-
-// Add edges
-void Graph::addEdge(int src, int dest) {
-    adjLists[src].push_front(dest);
-}
-
-// DFS algorithm
-void Graph::DFS(int vertex) {
-    visited[vertex] = true;
-    list<int> adjList = adjLists[vertex];
-
-    cout << vertex << " ";
-
-    list<int>::iterator i;
-    for (i = adjList.begin(); i != adjList.end(); ++i)
-        if (!visited[*i])
-            DFS(*i);
-}
 
 int main() {
     Graph g(4);
@@ -48,6 +13,9 @@ int main() {
     g.addEdge(2, 3);
 
     g.DFS(2);
+    cout << endl;
+
+    g.DisplayAdjList();
 
     return 0;
 }
